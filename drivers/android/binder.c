@@ -501,7 +501,8 @@ struct binder_priority {
  * @tsk                   task_struct for group_leader of process
  *                        (invariant after initialized)
  * @files                 files_struct for process
- *                        (invariant after initialized)
+ *                        (protected by @files_lock)
+ * @files_lock            mutex to protect @files
  * @deferred_work_node:   element for binder_deferred_list
  *                        (protected by binder_deferred_lock)
  * @deferred_work:        bitmap of deferred work to perform
