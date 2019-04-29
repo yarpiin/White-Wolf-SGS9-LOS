@@ -1968,18 +1968,6 @@ static int itmon_probe(struct platform_device *pdev)
 	itmon->pdata->rpathinfo = rpathinfo;
 	itmon->pdata->nodegroup = nodegroup;
 
-#ifdef CONFIG_SEC_DEBUG
-	extern int sec_debug_check_sj(void);
-	if (sec_debug_check_sj()) {
-		printk("%s: LOCKED, no s2d\n", __func__);
-		itmon->pdata->sysfs_s2d = 0;
-	} else {
-		printk("%s: UNLOCKED, s2d\n", __func__);
-		itmon->pdata->sysfs_s2d = 1;
-	}
-#endif
-
-
 	for (i = 0; i < (int)ARRAY_SIZE(nodegroup); i++) {
 		dev_name = nodegroup[i].name;
 		node = nodegroup[i].nodeinfo;

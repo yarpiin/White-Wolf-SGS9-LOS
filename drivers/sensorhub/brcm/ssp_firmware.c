@@ -15,17 +15,9 @@
 #include "ssp.h"
 
 #if defined(CONFIG_SENSORS_SSP_STAR)
-#if ANDROID_VERSION < 90000
 #define SSP_FIRMWARE_REVISION_BCM	18053100  /*Android O*/
-#else 
-#define SSP_FIRMWARE_REVISION_BCM	18090400  /*Android P*/
-#endif
 #elif defined(CONFIG_SENSORS_SSP_CROWN)
-#if ANDROID_VERSION < 90000
 #define SSP_FIRMWARE_REVISION_BCM	18090500  /*Android O*/
-#else
-#define SSP_FIRMWARE_REVISION_BCM	18090400  /*Android P*/
-#endif
 #elif defined(CONFIG_SENSORS_SSP_HAECHI)
 #define SSP_FIRMWARE_REVISION_BCM	18080200  /*Android O*/
 #else
