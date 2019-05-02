@@ -210,6 +210,8 @@ source "drivers/hwtracing/intel_th/Kconfig"
 
 source "drivers/fpga/Kconfig"
 
+source "drivers/energy_model/Kconfig"
+
 source "drivers/trace/Kconfig"
 
 source "drivers/vision/Kconfig"
