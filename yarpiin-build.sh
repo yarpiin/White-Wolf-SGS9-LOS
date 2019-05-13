@@ -16,7 +16,7 @@ STARDEFCONFIG="exynos9810-starlte_defconfig"
 STAR2DEFCONFIG="yarpiin_defconfig"
 KERNEL_DIR="/home/yarpiin/Android/Kernel/SGS9/White-Wolf-SGS9-LOS"
 RESOURCE_DIR="$KERNEL_DIR/.."
-KERNELFLASHER_DIR="/home/yarpiin/Android/Kernel/SGS9/KernelFlasher"
+KERNELFLASHER_DIR="/home/yarpiin/Android/Kernel/SGS9/LosFlasher"
 TOOLCHAIN_DIR="/home/yarpiin/Android/Toolchains"
 
 # Kernel Details
