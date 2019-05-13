@@ -1,6 +1,42 @@
 
 Project name: White-Wolf-SGS9-LOS
 
+13/05/2019
+
+  * version 3
+  * yarpiin_defconfig: update (Slawek) [afd6ab1c7c2a]
+  * Linux 4.9.175 (Greg Kroah-Hartman) [d9e93ac3c4db]
+  * timer/debug: Change /proc/timer_stats from 0644 to 0600 (Ben Hutchings) [2607cc601e0b]
+  * ASoC: Intel: avoid Oops if DMA setup fails (Ross Zwisler) [b473d3cb9202]
+  * UAS: fix alignment of scatter/gather segments (Oliver Neukum) [561c4620a92d]
+  * Bluetooth: Align minimum encryption key size for LE and BR/EDR connections (Marcel Holtmann) [10ab0f4ebc10]
+  * Bluetooth: hidp: fix buffer overflow (Young Xiao) [dbd30bc4cd3d]
+  * scsi: qla2xxx: Fix incorrect region-size setting in optrom SYSFS routines (Andrew Vasquez) [10ecf12a0106]
+  * usb-storage: Set virt_boundary_mask to avoid SG overflows (Alan Stern) [de388d1bfc66]
+  * USB: serial: f81232: fix interrupt worker not stop (Ji-Ze Hong (Peter Hong)) [382030eea0ff]
+  * usb: dwc3: Fix default lpm_nyet_threshold value (Thinh Nguyen) [5f66d123e3ad]
+  * genirq: Prevent use-after-free and work list corruption (Prasad Sodagudi) [5a90f536b208]
+  * ARM: 8680/1: boot/compressed: fix inappropriate Thumb2 mnemonic for __nop (Ard Biesheuvel) [b169e42aadc2]
+  * mm: add 'try_get_page()' helper function (Linus Torvalds) [12d16a40427a]
+  * iommu/amd: Set exclusion range correctly (Joerg Roedel) [41b23028de06]
+  * virtio-blk: limit number of hw queues by nr_cpu_ids (Dongli Zhang) [4d331cfe23d7]
+  * drm/mediatek: fix possible object reference leak (Wen Yang) [7961b62fd68b]
+  * scsi: csiostor: fix missing data copy in csio_scsi_err_handler() (Varun Prakash) [ec9a695c887a]
+  * linux/kernel.h: Use parentheses around argument in u64_to_user_ptr() (Jann Horn) [9254fc3b9ebb]
+  * perf/x86/intel: Fix handling of wakeup_events for multi-entry PEBS (Stephane Eranian) [15c10ac5facf]
+  * drm/mediatek: Fix an error code in mtk_hdmi_dt_parse_pdata() (Dan Carpenter) [64959a93135f]
+  * ASoC: tlv320aic32x4: Fix Common Pins (Annaliese McDermond) [35027b20796d]
+  * IB/hfi1: Eliminate opcode tests on mr deref (Kaike Wan) [d17df59a5604]
+  * ASoC: cs4270: Set auto-increment bit for register writes (Daniel Mack) [b4161e4e4ef9]
+  * ASoC: nau8810: fix the issue of widget with prefixed name (John Hsu) [05ebf8c6c488]
+  * ASoC:soc-pcm:fix a codec fixup issue in TDM case (Rander Wang) [8cdda5eff3ac]
+  * staging: greybus: power_supply: fix prop-descriptor request size (Johan Hovold) [7cbdd399a3e1]
+  * ubsan: Fix nasty -Wbuiltin-declaration-mismatch GCC-9 warnings (Andrey Ryabinin) [461acedc0ef5]
+  * scsi: libsas: fix a race condition when smp task timeout (Jason Yan) [2f470ddbf1c6]
+  * Added fsync on/off support. (Francisco Franco) [1931db2606fd]
+  * net/wireguard: add wireguard importer (zx2c4) [b8117b29ee50]
+  * build: update (Slawek) [606d53500718]
+
 08/05/2019
 
   * version 2

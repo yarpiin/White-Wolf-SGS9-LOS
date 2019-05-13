@@ -21,7 +21,7 @@ TOOLCHAIN_DIR="/home/yarpiin/Android/Toolchains"
 
 # Kernel Details
 BASE_YARPIIN_VER="WHITE.WOLF.SGS9.LOS"
-VER=".002"
+VER=".003"
 PERM=".PERM"
 YARPIIN_VER="$BASE_YARPIIN_VER$VER"
 YARPIIN_PERM_VER="$BASE_YARPIIN_VER$VER$PERM"
@@ -35,8 +35,8 @@ export KBUILD_BUILD_USER=yarpiin
 export KBUILD_BUILD_HOST=kernel
 
 # Paths
-STARIMG_DIR="/home/yarpiin/Android/Kernel/SGS9/KernelFlasher/boot/G960"
-STAR2IMG_DIR="/home/yarpiin/Android/Kernel/SGS9/KernelFlasher/boot/G965"
+STARIMG_DIR="/home/yarpiin/Android/Kernel/SGS9/LosFlasher/boot/G960"
+STAR2IMG_DIR="/home/yarpiin/Android/Kernel/SGS9/LosFlasher/boot/G965"
 ZIP_MOVE="/home/yarpiin/Android/Kernel/SGS9/Zip"
 ZIMAGE_DIR="$KERNEL_DIR/arch/arm64/boot"
 
