@@ -1,6 +1,16 @@
 
 Project name: White-Wolf-SGS9-LOS
 
+25/10/2019
+
+  * version 12
+  * yarpiin_defconfig: regenerate (Slawek) [01f50b740349]
+  * Import G96xFXXU7CSJ1 OSRC (Slawek) [fd8a34b04f2c]
+  * ANDROID: clang: update to 9.0.8 based on r365631c (Ram Muthiah) [5a3d6a15287f]
+  * ANDROID: move up spin_unlock_bh() ahead of remove_proc_entry() (DongJoo Kim) [0b96fc1bfd05]
+  * ANDROID: refactor build.config files to remove duplication (Matthias Maennich) [40dfb7927202]
+  * Revert "defconfig: disable zswap" (Slawek) [c25ffcecd080]
+
 19/10/2019
 
   * version 11
