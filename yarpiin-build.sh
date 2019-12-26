@@ -36,14 +36,14 @@ export KBUILD_BUILD_USER=yarpiin
 export KBUILD_BUILD_HOST=kernel
 
 # Paths
-STARREPACK_DIR="/home/yarpiin/Android/Kernel/SGS9/LosRepack/G960/split_img"
-AOSPSTARREPACK_DIR="/home/yarpiin/Android/Kernel/SGS9/AOSPRepack/G960/split_img"
-STAR2REPACK_DIR="/home/yarpiin/Android/Kernel/SGS9/LosRepack/G965/split_img"
-AOSPSTAR2REPACK_DIR="/home/yarpiin/Android/Kernel/SGS9/AOSPRepack/G965/split_img"
-STARIMG_DIR="/home/yarpiin/Android/Kernel/SGS9/LosRepack/G960"
-AOSPSTARIMG_DIR="/home/yarpiin/Android/Kernel/SGS9/AOSPRepack/G960"
-STAR2IMG_DIR="/home/yarpiin/Android/Kernel/SGS9/LosRepack/G965"
-AOSPSTAR2IMG_DIR="/home/yarpiin/Android/Kernel/SGS9/AOSPRepack/G965"
+STARREPACK_DIR="/home/yarpiin/Android/Kernel/SGS9/LosQRepack/G960/split_img"
+AOSPSTARREPACK_DIR="/home/yarpiin/Android/Kernel/SGS9/AOSPQRepack/G960/split_img"
+STAR2REPACK_DIR="/home/yarpiin/Android/Kernel/SGS9/LosQRepack/G965/split_img"
+AOSPSTAR2REPACK_DIR="/home/yarpiin/Android/Kernel/SGS9/AOSPQRepack/G965/split_img"
+STARIMG_DIR="/home/yarpiin/Android/Kernel/SGS9/LosQRepack/G960"
+AOSPSTARIMG_DIR="/home/yarpiin/Android/Kernel/SGS9/AOSPQRepack/G960"
+STAR2IMG_DIR="/home/yarpiin/Android/Kernel/SGS9/LosQRepack/G965"
+AOSPSTAR2IMG_DIR="/home/yarpiin/Android/Kernel/SGS9/AOSPQRepack/G965"
 ZIP_MOVE="/home/yarpiin/Android/Kernel/SGS9/Zip"
 ZIMAGE_DIR="$KERNEL_DIR/arch/arm64/boot"
 
@@ -82,14 +82,14 @@ function make_star_permissive_kernel {
 }
 
 function repack_star {
-		/bin/bash /home/yarpiin/Android/Kernel/SGS9/LosRepack/G960/repackimg.sh
+		/bin/bash /home/yarpiin/Android/Kernel/SGS9/LosQRepack/G960/repackimg.sh
 		cd $STARIMG_DIR
 		cp -vr image-new.img $KERNELFLASHER_DIR/G960.img
 		cd $KERNEL_DIR
 }
 
 function aosp_repack_star {
-		/bin/bash /home/yarpiin/Android/Kernel/SGS9/AOSPRepack/G960/repackimg.sh
+		/bin/bash /home/yarpiin/Android/Kernel/SGS9/AOSPQRepack/G960/repackimg.sh
 		cd $AOSPSTARIMG_DIR
 		cp -vr image-new.img $AOSPKERNELFLASHER_DIR/G960.img
 		cd $KERNEL_DIR
@@ -106,14 +106,14 @@ function make_star2_kernel {
 }
 
 function repack_star2 {
-		/bin/bash /home/yarpiin/Android/Kernel/SGS9/LosRepack/G965/repackimg.sh
+		/bin/bash /home/yarpiin/Android/Kernel/SGS9/LosQRepack/G965/repackimg.sh
 		cd $STAR2IMG_DIR
 		cp -vr image-new.img $KERNELFLASHER_DIR/G965.img
 		cd $KERNEL_DIR
 }
 
 function aosp_repack_star2 {
-		/bin/bash /home/yarpiin/Android/Kernel/SGS9/AOSPRepack/G965/repackimg.sh
+		/bin/bash /home/yarpiin/Android/Kernel/SGS9/AOSPQRepack/G965/repackimg.sh
 		cd $AOSPSTAR2IMG_DIR
 		cp -vr image-new.img $AOSPKERNELFLASHER_DIR/G965.img
 		cd $KERNEL_DIR
