@@ -26,7 +26,7 @@
  *
  * <<Broadcom-WL-IPTag/Open:>>
  *
- * $Id: bcmevent.h 779385 2018-09-03 17:35:01Z $
+ * $Id: bcmevent.h 789425 2018-11-16 08:53:17Z $
  *
  */
 
@@ -295,9 +295,10 @@ typedef union bcm_event_msg_u {
 #define WLC_E_GTK_KEYROT_NO_CHANSW      179     /* Avoid Chanswitch while GTK key rotation */
 #define WLC_E_ONBODY_STATUS_CHANGE	180	/* Indication of onbody status change */
 #define WLC_E_BCNRECV_ABORTED		181	/* Fake AP bcnrecv aborted roam event */
-#define WLC_E_LAST			182	/* highest val + 1 for range checking */
-#if (WLC_E_LAST > 182)
-#error "WLC_E_LAST: Invalid value for last event; must be <= 182."
+#define WLC_E_PMK_INFO			182	/* PMK,PMKID information event */
+#define WLC_E_LAST			183	/* highest val + 1 for range checking */
+#if (WLC_E_LAST > 183)
+#error "WLC_E_LAST: Invalid value for last event; must be <= 183."
 #endif /* WLC_E_LAST */
 
 /* define an API for getting the string name of an event */
@@ -412,7 +413,8 @@ typedef struct wl_event_sdb_trans {
 #define WLC_E_REASON_RADAR_DETECTED	13	/* roamed due to radar detection by STA */
 #define WLC_E_REASON_CSA	        14	/* roamed due to CSA from AP */
 #define WLC_E_REASON_ESTM_LOW      15  /* roamed due to ESTM low tput */
-#define WLC_E_REASON_LAST		16	/* NOTE: increment this as you add reasons above */
+#define WLC_E_REASON_SILENT_ROAM	16	/* roamed due to Silent roam */
+#define WLC_E_REASON_LAST		17	/* NOTE: increment this as you add reasons above */
 
 /* prune reason codes */
 #define WLC_E_PRUNE_ENCR_MISMATCH	1	/* encryption mismatch */
@@ -798,6 +800,7 @@ typedef enum wl_nan_events {
 	WL_NAN_EVENT_SLOT_END			= 43,	/* SLOT_END event */
 	WL_NAN_EVENT_HOST_ASSIST_REQ		= 44,	/* Requesting host assist */
 	WL_NAN_EVENT_RX_MGMT_FRM		= 45,	/* NAN management frame received */
+	WL_NAN_EVENT_DISC_CACHE_TIMEOUT		= 46,	/* Disc cache timeout */
 
 	WL_NAN_EVENT_INVALID				/* delimiter for max value */
 } nan_app_events_e;
@@ -1170,6 +1173,8 @@ struct wl_bssid_prune_evt_info {
 	struct ether_addr BSSID;
 	uint8	SSID_len;
 	uint8	reason;			/* Reason code */
+	int8	rssi_threshold;		/* RSSI threshold */
+	uint8	pad[3];			/* pad */
 };
 
 /* WLC_E_HWA Event structure */
@@ -1213,4 +1218,7 @@ typedef struct wl_event_adps {
 } wl_event_adps_v1_t;
 
 typedef wl_event_adps_v1_t wl_event_adps_t;
+
+#define WLC_USER_E_KEY_UPDATE	1 /* Key add/remove */
+
 #endif /* _BCMEVENT_H_ */

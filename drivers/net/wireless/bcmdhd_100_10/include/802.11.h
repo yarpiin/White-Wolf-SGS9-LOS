@@ -24,7 +24,7 @@
  *
  * <<Broadcom-WL-IPTag/Open:>>
  *
- * $Id: 802.11.h 778668 2018-08-29 01:12:46Z $
+ * $Id: 802.11.h 785355 2018-10-18 05:32:56Z $
  */
 
 #ifndef _802_11_H_
@@ -2946,6 +2946,16 @@ typedef struct dot11_rmrep_last_bcn_rpt_ind_req dot11_rmrep_last_bcn_rpt_ind_req
 #define DOT11_RMREP_BCN_LAST_RPT_IND 164
 #define DOT11_RMREP_BCN_FRM_BODY_LEN_MAX	224 /* 802.11k-2008 7.3.2.22.6 */
 
+/* Refer IEEE P802.11-REVmd/D1.0 9.4.2.21.7 Beacon report */
+BWL_PRE_PACKED_STRUCT struct dot11_rmrep_bcn_frm_body_fragmt_id {
+	uint8 id;                       /* DOT11_RMREP_BCN_FRM_BODY_FRAG_ID */
+	uint8 len;                      /* length of remaining fields */
+	/* More fragments(B15), fragment Id(B8-B14), Bcn rpt instance ID (B0 - B7) */
+	uint16 frag_info_rpt_id;
+} BWL_POST_PACKED_STRUCT;
+
+typedef struct dot11_rmrep_bcn_frm_body_fragmt_id dot11_rmrep_bcn_frm_body_fragmt_id_t;
+
 BWL_PRE_PACKED_STRUCT struct dot11_rmrep_bcn_frm_body_frag_id {
 	uint8 id;                       /* DOT11_RMREP_BCN_FRM_BODY_FRAG_ID */
 	uint8 len;                      /* length of remaining fields */
@@ -2954,9 +2964,15 @@ BWL_PRE_PACKED_STRUCT struct dot11_rmrep_bcn_frm_body_frag_id {
 } BWL_POST_PACKED_STRUCT;
 
 typedef struct dot11_rmrep_bcn_frm_body_frag_id dot11_rmrep_bcn_frm_body_frag_id_t;
-#define DOT11_RMREP_BCNRPT_FRAG_ID_DATA_LEN  2
+#define DOT11_RMREP_BCNRPT_FRAG_ID_DATA_LEN  2u
 #define DOT11_RMREP_BCNRPT_FRAG_ID_SE_LEN sizeof(dot11_rmrep_bcn_frm_body_frag_id_t)
-#define DOT11_RMREP_BCNRPT_FRAG_ID_NUM_SHIFT  1
+#define DOT11_RMREP_BCNRPT_FRAG_ID_NUM_SHIFT  1u
+#define DOT11_RMREP_BCNRPT_FRAGMT_ID_SE_LEN sizeof(dot11_rmrep_bcn_frm_body_fragmt_id_t)
+#define DOT11_RMREP_BCNRPT_BCN_RPT_ID_MASK  0x00FFu
+#define DOT11_RMREP_BCNRPT_FRAGMT_ID_NUM_SHIFT  8u
+#define DOT11_RMREP_BCNRPT_FRAGMT_ID_NUM_MASK  0x7F00u
+#define DOT11_RMREP_BCNRPT_MORE_FRAG_SHIFT  15u
+#define DOT11_RMREP_BCNRPT_MORE_FRAG_MASK  0x8000u
 
 BWL_PRE_PACKED_STRUCT struct dot11_rmrep_last_bcn_rpt_ind {
 	uint8 id;                       /* DOT11_RMREP_BCN_LAST_RPT_IND */
@@ -3782,6 +3798,34 @@ enum {
 	BRCM_FTM_VS_INITIATOR_RPT_SUBTYPE = 1,	/* FTM Initiator Report */
 	BRCM_FTM_VS_COLLECT_SUBTYPE = 2,	/* FTM Collect debug protocol */
 };
+
+/*
+ * This BRCM_PROP_OUI types is intended for use in events to embed additional
+ * data, and would not be expected to appear on the air -- but having an IE
+ * format allows IE frame data with extra data in events in that allows for
+ * more flexible parsing.
+ */
+#define BRCM_EVT_WL_BSS_INFO	64
+
+/**
+ * Following is the generic structure for brcm_prop_ie (uses BRCM_PROP_OUI).
+ * DPT uses this format with type set to DPT_IE_TYPE
+ */
+BWL_PRE_PACKED_STRUCT struct brcm_prop_ie_s {
+	uint8 id;		/* IE ID, 221, DOT11_MNG_PROPR_ID */
+	uint8 len;		/* IE length */
+	uint8 oui[3];
+	uint8 type;		/* type of this IE */
+	uint16 cap;		/* DPT capabilities */
+} BWL_POST_PACKED_STRUCT;
+typedef struct brcm_prop_ie_s brcm_prop_ie_t;
+
+#define BRCM_PROP_IE_LEN	6	/* len of fixed part of brcm_prop ie */
+
+#define DPT_IE_TYPE             2
+
+#define BRCM_SYSCAP_IE_TYPE	3
+#define WET_TUNNEL_IE_TYPE	3
 
 /* brcm syscap_ie cap */
 #define BRCM_SYSCAP_WET_TUNNEL	0x0100	/* Device with WET_TUNNEL support */

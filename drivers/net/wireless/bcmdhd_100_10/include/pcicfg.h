@@ -24,7 +24,7 @@
  *
  * <<Broadcom-WL-IPTag/Open:>>
  *
- * $Id: pcicfg.h 794374 2018-12-13 05:40:58Z $
+ * $Id: pcicfg.h 792963 2018-12-06 10:18:17Z $
  */
 
 #ifndef	_h_pcicfg_
@@ -78,6 +78,7 @@
 #define PCI_CAP_MSICAP_ID		0x05
 #define PCI_CAP_VENDSPEC_ID		0x09
 #define PCI_CAP_PCIECAP_ID		0x10
+#define PCI_CAP_MSIXCAP_ID		0x11
 
 /* Data structure to define the Message Signalled Interrupt facility
  * Valid for PCI and PCIE configurations

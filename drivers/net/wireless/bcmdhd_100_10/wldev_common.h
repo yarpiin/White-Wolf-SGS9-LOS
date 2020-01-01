@@ -24,7 +24,7 @@
  *
  * <<Broadcom-WL-IPTag/Open:>>
  *
- * $Id: wldev_common.h 812480 2019-04-01 07:43:53Z $
+ * $Id: wldev_common.h 812478 2019-04-01 07:35:00Z $
  */
 #ifndef __WLDEV_COMMON_H__
 #define __WLDEV_COMMON_H__

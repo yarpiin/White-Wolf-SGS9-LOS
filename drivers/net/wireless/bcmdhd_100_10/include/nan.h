@@ -25,7 +25,7 @@
  *
  * <<Broadcom-WL-IPTag/Open:>>
  *
- * $Id: nan.h 773122 2018-07-20 08:27:36Z $
+ * $Id: nan.h 781055 2018-09-17 19:01:57Z $
  */
 #ifndef _NAN_H_
 #define _NAN_H_
@@ -833,6 +833,8 @@ enum
 								NDL_ATTR_TYPE_STATUS_ACCEPTED)
 #define NAN_NDL_REJECT(_ndl)	(((_ndl)->type_status & NAN_NDL_STATUS_MASK) == \
 								NDL_ATTR_TYPE_STATUS_REJECTED)
+#define NAN_NDL_FRM_STATUS(_ndl) \
+	(((_ndl)->type_status & NAN_NDL_STATUS_MASK) >> NAN_NDL_STATUS_SHIFT)
 
 #define NDL_ATTR_CTRL_NONE				0
 #define NDL_ATTR_CTRL_PEER_ID_PRESENT	(1 << NDL_ATTR_CTRL_PEER_ID_PRESENT_SHIFT)
@@ -1072,6 +1074,10 @@ typedef BWL_PRE_PACKED_STRUCT struct nan2_pub_act_frame_s {
 /* Schedule Update */
 #define NAN_MGMT_FRM_SUBTYPE_SCHED_UPD		13
 
+#define NAN_SCHEDULE_AF(_naf_subtype) \
+	((_naf_subtype >= NAN_MGMT_FRM_SUBTYPE_SCHED_REQ) && \
+	(_naf_subtype <= NAN_MGMT_FRM_SUBTYPE_SCHED_UPD))
+
 /* Reason code defines */
 #define NAN_REASON_RESERVED			0x0
 #define NAN_REASON_UNSPECIFIED			0x1
@@ -1138,6 +1144,10 @@ typedef BWL_PRE_PACKED_STRUCT struct wifi_nan_ndp_attr_s {
 									NAN_NDP_STATUS_ACCEPT)
 #define NAN_NDP_REJECT(_ndp)	(((_ndp)->type_status & NAN_NDP_STATUS_MASK) == \
 									NAN_NDP_STATUS_REJECT)
+
+#define NAN_NDP_FRM_STATUS(_ndp) \
+	(((_ndp)->type_status & NAN_NDP_STATUS_MASK) >> NAN_NDP_STATUS_SHIFT)
+
 /* NDP Setup Status */
 #define NAN_NDP_SETUP_STATUS_OK		1
 #define NAN_NDP_SETUP_STATUS_FAIL	0

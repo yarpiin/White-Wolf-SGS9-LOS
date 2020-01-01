@@ -24,7 +24,7 @@
  *
  * <<Broadcom-WL-IPTag/Open:>>
  *
- * $Id: event_log_tag.h 779150 2018-08-31 10:04:22Z $
+ * $Id: event_log_tag.h 791793 2018-11-30 18:55:14Z $
  */
 
 #ifndef _EVENT_LOG_TAG_H_
@@ -252,6 +252,14 @@
 #define EVENT_LOG_TAG_CPLT_ERROR		228
 #define EVENT_LOG_TAG_DNGL_ERROR		229
 #define EVENT_LOG_TAG_NVRAM_ERROR		230
+#define EVENT_LOG_TAG_NAC			231
+
+/* Available space for new tags for Dingo, Iguana and branches
+ * prior to Koala only. From Koala onwards, new tags must be greater
+ * than 255. If a tag is required for Koala and legacy productization branches,
+ * add that tag here. Tags > 255 will generate extended header. Legacy code
+ * does not understand extended header.
+ */
 
 /* Debug tags for making debug builds */
 #define EVENT_LOG_TAG_DBG1			251
@@ -347,9 +355,23 @@
 #define EVENT_LOG_TAG_WL_TDLS_INFO              315
 #define EVENT_LOG_TAG_WL_TDLS_DBG               316
 #define EVENT_LOG_TAG_WL_TDLS_ERR               317
+#define EVENT_LOG_TAG_SB_SCHED_DBG_SYNC		318
+
+/* MSCH messages */
+#define EVENT_LOG_TAG_MSCH_DATASTRUCT		319
+#define EVENT_LOG_TAG_MSCH_REGISTER		320
+#define EVENT_LOG_TAG_MSCH_CALLBACK		321
+#define EVENT_LOG_TAG_MSCH_ERROR		322
+#define EVENT_LOG_TAG_MSCH_DEBUG		323
+#define EVENT_LOG_TAG_MSCH_INFORM		324
+#define EVENT_LOG_TAG_MSCH_TRACE		325
+
+/* bus low power related info messages */
+#define EVENT_LOG_TAG_WL_BUS_LP_INFO		326
+#define EVENT_LOG_TAG_PCI_LP_INFO		327
 
 /* EVENT_LOG_TAG_MAX	= Set to the same value of last tag, not last tag + 1 */
-#define EVENT_LOG_TAG_MAX			317
+#define EVENT_LOG_TAG_MAX			327
 
 typedef enum wl_el_set_type_def {
 	EVENT_LOG_SET_TYPE_DEFAULT = 0, /* flush the log buffer when it is full - Default option */

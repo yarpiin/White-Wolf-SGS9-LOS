@@ -27,7 +27,7 @@
  *
  * <<Broadcom-WL-IPTag/Open:>>
  *
- * $Id: bcmmsgbuf.h 777047 2018-08-17 01:01:33Z $
+ * $Id: bcmmsgbuf.h 786412 2018-10-26 00:05:49Z $
  */
 #ifndef _bcmmsgbuf_h_
 #define	_bcmmsgbuf_h_
@@ -69,6 +69,7 @@
 #define H2DRING_DYNAMIC_INFO_MAX_ITEM          32
 #define D2HRING_DYNAMIC_INFO_MAX_ITEM          32
 
+#define D2HRING_EDL_HDR_SIZE			48u
 #define D2HRING_EDL_ITEMSIZE			2048u
 #define D2HRING_EDL_MAX_ITEM			256u
 #define D2HRING_EDL_WATERMARK			(D2HRING_EDL_MAX_ITEM >> 5u)
@@ -433,6 +434,7 @@ typedef struct pcie_dma_xfer_params {
 	uint8		flags;
 } pcie_dma_xfer_params_t;
 
+#define BCMPCIE_FLOW_RING_INTF_HP2P 0x1
 /** Complete msgbuf hdr for flow ring update from host to dongle */
 typedef struct tx_flowring_create_request {
 	cmn_msg_hdr_t   msg;
@@ -987,7 +989,7 @@ typedef struct host_txbuf_post {
 
 			/** user defined rate */
 			uint8 rate;
-			uint8 rsvd2;
+			uint8 exp_time;
 		};
 		/** XOR checksum or a magic number to audit DMA done */
 		dma_done_t	marker;

@@ -24,20 +24,11 @@
  *
  * <<Broadcom-WL-IPTag/Open:>>
  *
- * $Id: event_log_set.h 771154 2018-07-09 05:46:33Z $
+ * $Id: event_log_set.h 787008 2018-10-31 04:14:02Z $
  */
 
 #ifndef _EVENT_LOG_SET_H_
 #define _EVENT_LOG_SET_H_
-
-#ifndef NUM_EVENT_LOG_SETS
-/* Set a maximum number of sets here.  It is not dynamic for
- * efficiency of the EVENT_LOG calls. Old branches could define
- * this to an appropriat enumber in their makefiles to reduce
- * ROM invalidation
- */
-#define NUM_EVENT_LOG_SETS (24)
-#endif // endif
 
 /* Set assignments */
 #define EVENT_LOG_SET_BUS		(0u)
@@ -102,6 +93,21 @@
 
 /* Used for timestamp plotting, TS_LOG() */
 #define EVENT_LOG_SET_TS_LOG		(23u)
+
+/* BUS preserve chatty */
+/* Note: This is chip specific logset and NUM_EVENT_LOG_SETS updated
+ * in chip specific makefile to accomodate this
+ */
+#define EVENT_LOG_SET_PRSRV_BUS_CHATTY	(24u)
+
+#ifndef NUM_EVENT_LOG_SETS
+/* Set a maximum number of sets here.  It is not dynamic for
+ * efficiency of the EVENT_LOG calls. Old branches could define
+ * this to an appropriat enumber in their makefiles to reduce
+ * ROM invalidation
+ */
+#define NUM_EVENT_LOG_SETS (24)
+#endif // endif
 
 /* send delayed logs when >= 50% of buffer is full */
 #ifndef ECOUNTERS_DELAYED_FLUSH_PERCENTAGE

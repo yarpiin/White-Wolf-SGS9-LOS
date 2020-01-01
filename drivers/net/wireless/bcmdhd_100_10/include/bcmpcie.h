@@ -26,7 +26,7 @@
  *
  * <<Broadcom-WL-IPTag/Open:>>
  *
- * $Id: bcmpcie.h 775339 2018-08-07 02:14:37Z $
+ * $Id: bcmpcie.h 786412 2018-10-26 00:05:49Z $
  */
 
 #ifndef	_bcmpcie_h_
@@ -88,6 +88,7 @@ typedef struct {
 #define PCIE_SHARED2_SUBMIT_COUNT_WAR	0x00000010	/* submission count WAR */
 #define PCIE_SHARED2_FW_SMALL_MEMDUMP	0x00000200      /* FW small memdump */
 #define PCIE_SHARED2_DEBUG_BUF_DEST	0x00002000	/* debug buf dest support */
+
 #define PCIE_SHARED_FAST_DELETE_RING	0x00000020      /* Fast Delete Ring */
 #define PCIE_SHARED_EVENT_BUF_POOL_MAX	0x000000c0      /* event buffer pool max bits */
 #define PCIE_SHARED_EVENT_BUF_POOL_MAX_POS     6       /* event buffer pool max bit position */
@@ -168,6 +169,12 @@ typedef struct {
 /* BT producer index reset WAR */
 #define PCIE_SHARED2_PCIE_ENUM_RESET_FLR		0x00004000
 
+/* Timestamp in packet */
+#define PCIE_SHARED2_PKT_TIMESTAMP	0x00008000
+
+/* HP2P feature */
+#define PCIE_SHARED2_HP2P   0x00010000
+
 /**
  * Message rings convey messages between host and device. They are unidirectional, and are located
  * in host memory.
@@ -203,6 +210,8 @@ typedef struct {
 #define BCMPCIE_D2H_RING_TYPE_AC_RX_COMPLETE		0x5
 #define BCMPCIE_D2H_RING_TYPE_BTLOG_CPL		0x6
 #define BCMPCIE_D2H_RING_TYPE_EDL                       0x7
+#define BCMPCIE_D2H_RING_TYPE_HPP_TX_CPL        0x8
+#define BCMPCIE_D2H_RING_TYPE_HPP_RX_CPL        0x9
 
 /**
  * H2D and D2H, WR and RD index, are maintained in the following arrays:
@@ -417,6 +426,8 @@ typedef struct {
 #define HOSTCAP_EXT_TRAP_DBGBUF			0x04000000
 /* Host support for enhanced debug lane */
 #define HOSTCAP_EDL_RING			0x10000000
+#define HOSTCAP_PKT_TIMESTAMP			0x20000000
+#define HOSTCAP_PKT_HP2P               0x40000000
 
 /* extended trap debug buffer allocation sizes. Note that this buffer can be used for
  * other trap related purposes also.
